@@ -14,12 +14,22 @@ export const VehicleSummaryModal = ({ visible, onClose, vehicle }) => {
         rentalPrice,
         owner,
     } = vehicle
+    function handleRandomDate(start, end) {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+    }
+
     const handleBookNow = async () => {
         const user = auth.currentUser
+        let pfp = ''
+
 
         if (user !== null) {
+            if (user.email === 'renter1@gmail.com') pfp = 'https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxLzI3OS1wYWkxNTc5LW5hbS1qb2IxNTI5LnBuZw.png'
+            if (user.email === 'renter2@gmail.com') pfp = 'https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA4L2pvYjExMjAtZWxlbWVudC0xOS5wbmc.png'
+
             try {
                 const bookingsRef = collection(db, 'bookings');
+                const bookingDate = handleRandomDate(new Date(), new Date(2025, 5, 1)).toISOString()
 
                 const bookingToInsert = {
                     vehicleName,
@@ -31,6 +41,8 @@ export const VehicleSummaryModal = ({ visible, onClose, vehicle }) => {
                     coordinates,
                     rentalPrice,
                     owner,
+                    renterPhoto: pfp,
+                    bookingDate,
                     renter: user.email,
                     bookingStatus: 'Pending',
                 };

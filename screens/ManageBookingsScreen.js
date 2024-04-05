@@ -44,7 +44,7 @@ const ManageBookingsScreen = ({ navigation }) => {
                 <Text style={styles.detailText}>Price: ${item.rentalPrice}</Text>
                 <View style={styles.ownerInfo}>
                     <Text style={styles.ownerName}>Owner: {item.ownerName}</Text>
-                    <Image source={{ uri: 'https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA4L2pvYjEwMzQtZWxlbWVudC0wNi0zOTcucG5n.png' }} style={styles.ownerPhoto} />
+                    <Image source={{ uri: item.ownerPhoto }} style={styles.ownerPhoto} />
                 </View>
                 <Text style={[styles.status, item.bookingStatus === 'Approved' ? styles.confirmed : "", item.bookingStatus === 'Pending' ? styles.pending : "", item.bookingStatus === 'Declined' ? styles.declined : ""]}>
                     {item.bookingStatus}
@@ -137,5 +137,4 @@ const styles = StyleSheet.create({
 
 
 export default ManageBookingsScreen;
-
 
