@@ -43,7 +43,7 @@ const ManageBookingsScreen = ({ navigation }) => {
                 <Text style={styles.detailText}>Electric range: {item.electricRange}</Text>
                 <Text style={styles.detailText}>Price: ${item.rentalPrice}</Text>
                 <View style={styles.ownerInfo}>
-                    <Text style={styles.ownerName}>Owner: {item.ownerName}</Text>
+                    <Text style={styles.ownerEmail}>Owner: {item.owner}</Text>
                     <Image source={{ uri: item.ownerPhoto }} style={styles.ownerPhoto} />
                 </View>
                 <Text style={[styles.status, item.bookingStatus === 'Approved' ? styles.confirmed : "", item.bookingStatus === 'Pending' ? styles.pending : "", item.bookingStatus === 'Declined' ? styles.declined : ""]}>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 10,
     },
-    ownerName: {
+    ownerEmail: {
         fontSize: 16,
         fontWeight: 'bold',
         marginRight: 10,

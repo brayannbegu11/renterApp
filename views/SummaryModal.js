@@ -13,6 +13,7 @@ export const VehicleSummaryModal = ({ visible, onClose, vehicle }) => {
         coordinates,
         rentalPrice,
         owner,
+        ownerPhoto
     } = vehicle
     function handleRandomDate(start, end) {
         return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
@@ -41,6 +42,7 @@ export const VehicleSummaryModal = ({ visible, onClose, vehicle }) => {
                     coordinates,
                     rentalPrice,
                     owner,
+                    ownerPhoto,
                     renterPhoto: pfp,
                     bookingDate,
                     renter: user.email,
